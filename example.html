@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>옷 골라주는 챗봇</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>    
+    <py-env>
+      - matplotlib
+    </py-env>
+  </head>
+  <body>
+    <py-script>
+      import matplotlib.pyplot as plt
+      import matplotlib.image as mpimg
+
+
+      # html ID "input_text"와 "output_text" 와 연결된 객체 생성 
+      input_text = Element("input_text") 
+      output_text = Element("output_text") 
+
+      # html 에서 생성한 ID "add_text" 의 버튼이 눌렸을 때 호출될 pys-onClick 인자로 설정된 함수 생성 
+      def function_add_text(*args1): 
+        # output_text 객체의 text 값을 input_text의 값으로 지정 
+        output_text.element.innerText = input_text.value 
+        # 함수가 실행된 후 input_text의 값을 초기화 
+        input_text.clear() 
+      
+      # html ID "input_text"와 "output_text" 와 연결된 객체 생성 
+      input_text2 = Element("input_text2") 
+      output_text2 = Element("output_text2") 
+
+      # html 에서 생성한 ID "add_text" 의 버튼이 눌렸을 때 호출될 pys-onClick 인자로 설정된 함수 생성 
+      def function_add_text2(*args2): 
+        # output_text 객체의 text 값을 input_text의 값으로 지정 
+        output_text2.element.innerText = input_text2.value 
+        # 함수가 실행된 후 input_text의 값을 초기화 
+        input_text2.clear() 
+    </py-script>    
+
+    <main class = "container"> 
+      <div> 
+        <h1> 안녕하세요? 당신의 옷 선택을 도와줄 챗봇입니다! </h1>
+        <h2>당신에게 몇가지 질문을 드릴테니 선택지를 골라주세요.</h2>
+        <h2>우선 상의부터 골라드리겠습니다.</h2>
+        <h2>현재 무슨 계절인가요?? (봄/여름) 인가요? (가을/겨울)인가요? <br>(봄/여름)은 1번을 (가을/겨울)은 2번을 눌러주세요.</h2>
+        <input id = "input_text" type="text" placeholder="텍스트를 입력하세요"> 
+        <button id = "add_text" pys-onClick ="function_add_text">Click</button> 
+        <h1 id = "output_text"></h1> 
+
+        <h2>댄디와 캐주얼 중에서 어떤 스타일을 좋아하시나요?<br> 댄디는 1번 캐주얼은 2번을 눌러주세요</h2>
+        <input id = "input_text2" type="text" placeholder="텍스트를 입력하세요"> 
+        <button id = "add_text2" pys-onClick ="function_add_text2">Click</button>  
+        <h1 id = "output_text2"></h1> 
+
+        <h2>겉옷을 즐겨입으시나요? <br>yes:1, no:2</h2> 
+        <input id = "input_text" type="text" placeholder="텍스트를 입력하세요"> 
+        <button id = "add_text" pys-onClick ="function_add_text">Click</button> 
+        <h1 id = "output_text"></h1> 
+
+
+        <h2>당신에게 맞는 옷을 추천드리겠습니다!</h2> 
+
+      </div> 
+    </main>    
+  </body>
+</html>
